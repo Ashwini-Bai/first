@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fb;
+    color: #333;
+}
+
+/* Header */
+
+header {
+    background: #087f8c;
+    color: white;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Hero */
+
+.hero {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    padding: 50px 10%;
+    background: linear-gradient(
+        120deg,
+        #dff8fa,
+        #ffffff
+    );
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #075e68;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* Button */
+
+.btn {
+    display: inline-block;
+    background: #087f8c;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #055963;
+}
+
+/* Sections */
+
+.section {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.section h2 {
+    color: #075e68;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+/* Cards */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 280px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #087f8c;
+}
+
+/* Forms */
+
+form {
+    max-width: 450px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input,
+select {
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+form .btn {
+    font-size: 16px;
+}
+
+/* Messages */
+
+#message,
+#loginMessage {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Footer */
+
+footer {
+    background: #075e68;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero {
+        text-align: center;
+    }
+}

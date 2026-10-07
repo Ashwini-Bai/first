@@ -1,0 +1,124 @@
+async function bookAppointment() {
+
+    const name = document.getElementById("patientName").value;
+    const email = document.getElementById("patientEmail").value;
+    const phone = document.getElementById("patientPhone").value;
+    const doctor = document.getElementById("appointmentDoctor").value;
+    const date = document.getElementById("appointmentDate").value;
+    const time = document.getElementById("appointmentTime").value;
+    const reason = document.getElementById("reason").value;
+
+    const appointment = {
+        name: name,
+        email: email,
+        phone: phone,
+        doctor: doctor,
+        date: date,
+        time: time,
+        reason: reason
+    };
+
+    try {
+
+        // Save appointment locally
+        localStorage.setItem(
+            "appointment",
+            JSON.stringify(appointment)
+        );
+
+        // Send appointment to backend
+        const response = await fetch(
+            "http://localhost:3000/send-appointment-email",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(appointment)
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                result.message || "Email could not be sent."
+            );
+        }
+
+        document.getElementById(
+            "appointmentMessage"
+        ).innerHTML =
+
+            "<div class='message'>" +
+
+            "✅ Appointment booked successfully!" +
+
+            "<br><br>" +
+
+            "<strong>Patient:</strong> " +
+            name +
+
+            "<br>" +
+
+            "<strong>Email:</strong> " +
+            email +
+
+            "<br>" +
+
+            "<strong>Phone:</strong> " +
+            phone +
+
+            "<br>" +
+
+            "<strong>Doctor:</strong> " +
+            doctor +
+
+            "<br>" +
+
+            "<strong>Date:</strong> " +
+            date +
+
+            "<br>" +
+
+            "<strong>Time:</strong> " +
+            time +
+
+            "<br>" +
+
+            "<strong>Reason:</strong> " +
+            reason +
+
+            "<br><br>" +
+
+            "📧 Appointment notification has been sent to the healthcare team." +
+
+            "</div>";
+
+        document
+            .querySelector("#appointment form")
+            .reset();
+
+        displayAppointments();
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "appointmentMessage"
+        ).innerHTML =
+
+            "<div class='message'>" +
+
+            "⚠️ Appointment was saved, but the email could not be sent." +
+
+            "<br><br>" +
+
+            "Please make sure the backend email server is running." +
+
+            "</div>";
+    }
+}

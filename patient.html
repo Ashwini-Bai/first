@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f8f9;
+            margin: 0;
+        }
+
+        header {
+            background: #087f8c;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .box {
+            width: 500px;
+            max-width: 90%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px #ccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #075e68;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #087f8c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        #message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <b>🏥 HealthCare</b>
+    <a href="patient.html">← Dashboard</a>
+</header>
+
+<div class="box">
+
+    <h1>📅 Book Appointment</h1>
+
+    <form onsubmit="bookAppointment(); return false;">
+
+        <input type="text" id="name"
+               placeholder="Patient Name" required>
+
+        <select id="doctor" required>
+            <option value="">Select Doctor</option>
+            <option>Dr. Anjali - Cardiologist</option>
+            <option>Dr. Rahul - General Physician</option>
+            <option>Dr. Priya - Dermatologist</option>
+        </select>
+
+        <input type="date" id="date" required>
+
+        <input type="time" id="time" required>
+
+        <textarea id="reason"
+                  placeholder="Reason for visit"
+                  required></textarea>
+
+        <button type="submit">
+            Confirm Appointment
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<script>
+function bookAppointment() {
+
+    let name = document.getElementById("name").value;
+    let doctor = document.getElementById("doctor").value;
+    let date = document.getElementById("date").value;
+    let time = document.getElementById("time").value;
+
+    document.getElementById("message").innerHTML =
+        "✅ Appointment booked successfully!<br>" +
+        name + " - " + doctor + "<br>" +
+        date + " at " + time;
+}
+</script>
+
+</body>
+</html>
